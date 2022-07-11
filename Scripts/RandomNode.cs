@@ -22,6 +22,7 @@ namespace Dialogue
                 port = GetOutputPort("randomEntries " + index);
             }
 
+            if (port == null) return;
             for (int i = 0; i < port.ConnectionCount; i++)
             {
                 NodePort connection = port.GetConnection(i);
