@@ -23,11 +23,16 @@ namespace Dialogue
                 }
             }
 
-            //Trigger next nodes
+            // Trigger next nodes
             NodePort port;
             if (success) port = GetOutputPort("pass");
             else port = GetOutputPort("fail");
-            if (port == null) return;
+
+            if (port == null)
+            {
+                (graph as DialogueGraph).current = null;
+                return;
+            }
             for (int i = 0; i < port.ConnectionCount; i++)
             {
                 NodePort connection = port.GetConnection(i);
