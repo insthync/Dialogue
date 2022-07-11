@@ -7,21 +7,23 @@ using UnityEngine;
 using UnityEngine.Events;
 using XNode;
 
-namespace Dialogue {
+namespace Dialogue
+{
     [NodeTint("#CCCCFF")]
-    public class Branch : DialogueBaseNode {
-
+    public class Branch : DialogueBaseNode
+    {
         public Condition[] conditions;
         [Output] public DialogueBaseNode pass;
         [Output] public DialogueBaseNode fail;
 
-        private bool success;
-
-        public override void Trigger() {
+        public override void Trigger()
+        {
             // Perform condition
             bool success = true;
-            for (int i = 0; i < conditions.Length; i++) {
-                if (!conditions[i].Invoke()) {
+            for (int i = 0; i < conditions.Length; i++)
+            {
+                if (!conditions[i].Invoke())
+                {
                     success = false;
                     break;
                 }
@@ -32,7 +34,8 @@ namespace Dialogue {
             if (success) port = GetOutputPort("pass");
             else port = GetOutputPort("fail");
             if (port == null) return;
-            for (int i = 0; i < port.ConnectionCount; i++) {
+            for (int i = 0; i < port.ConnectionCount; i++)
+            {
                 NodePort connection = port.GetConnection(i);
                 (connection.node as DialogueBaseNode).Trigger();
             }
