@@ -2,7 +2,7 @@ using XNode;
 
 namespace Dialogue
 {
-    [NodeTint("#CCCCFF")]
+    [NodeTint("#3333FF")]
     public class RandomNode : DialogueBaseNode
     {
         [Output(dynamicPortList = true)] public string[] randomEntries = new string[0];
