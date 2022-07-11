@@ -29,7 +29,10 @@ namespace Dialogue
             }
             GUILayout.Space(-30);
 
+            NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("title"), GUIContent.none);
+            NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("titleByLanguageKeys"), GUIContent.none);
             NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("text"), GUIContent.none);
+            NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("textByLanguageKeys"), GUIContent.none);
             NodeEditorGUILayout.DynamicPortList("answers", typeof(DialogueBaseNode), serializedObject, NodePort.IO.Output, Node.ConnectionType.Override);
 
             serializedObject.ApplyModifiedProperties();
