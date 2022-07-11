@@ -5,7 +5,7 @@ using XNode;
 namespace Dialogue
 {
     [NodeTint("#CCFFCC")]
-    public class Chat : DialogueBaseNode
+    public partial class Chat : DialogueBaseNode
     {
         public CharacterInfo character;
         public string title;
@@ -13,7 +13,7 @@ namespace Dialogue
         [Output(dynamicPortList = true)] public List<Answer> answers = new List<Answer>();
 
         [System.Serializable]
-        public class Answer
+        public partial class Answer
         {
             public string text;
             public AudioClip voiceClip;

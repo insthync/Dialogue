@@ -3,7 +3,7 @@
 namespace Dialogue
 {
 	[CreateAssetMenu(menuName = "Dialogue/CharacterInfo")]
-	public class CharacterInfo : ScriptableObject
+	public partial class CharacterInfo : ScriptableObject
 	{
 		public Sprite icon;
 		public string title;
