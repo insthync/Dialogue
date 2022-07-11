@@ -22,7 +22,7 @@ namespace Dialogue
                 port = GetOutputPort("randomEntries " + index);
             }
 
-            if (port == null)
+            if (port == null || !port.IsConnected)
             {
                 (graph as DialogueGraph).current = null;
                 return;

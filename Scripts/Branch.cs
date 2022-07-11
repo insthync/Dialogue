@@ -28,7 +28,7 @@ namespace Dialogue
             if (success) port = GetOutputPort("pass");
             else port = GetOutputPort("fail");
 
-            if (port == null)
+            if (port == null || !port.IsConnected)
             {
                 (graph as DialogueGraph).current = null;
                 return;

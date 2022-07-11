@@ -8,6 +8,7 @@ namespace Dialogue
     public class Chat : DialogueBaseNode
     {
         public CharacterInfo character;
+        public string title;
         [TextArea] public string text;
         [Output(dynamicPortList = true)] public List<Answer> answers = new List<Answer>();
 
@@ -31,7 +32,7 @@ namespace Dialogue
                 port = GetOutputPort("answers " + index);
             }
 
-            if (port == null)
+            if (port == null || !port.IsConnected)
             {
                 (graph as DialogueGraph).current = null;
                 return;
