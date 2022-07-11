@@ -9,7 +9,7 @@ namespace DialogueEditor {
 	public class DialogueGraphEditor : NodeGraphEditor {
 		
 		public override string GetNodeMenuName(System.Type type) {
-			if (type.Namespace == "Dialogue") return base.GetNodeMenuName(type).Replace("Dialogue/","");
+			if (type.IsSubclassOf(typeof(DialogueBaseNode))) return base.GetNodeMenuName(type);
 			else return null;
 		}
 	}
