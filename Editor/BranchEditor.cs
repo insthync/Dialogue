@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Dialogue;
+﻿using Dialogue;
 using UnityEditor;
-using UnityEngine;
 using XNodeEditor;
 
-namespace DialogueEditor {
+namespace DialogueEditor
+{
     [CustomNodeEditor(typeof(Branch))]
-    public class BranchEditor : NodeEditor {
+    public class BranchEditor : NodeEditor
+    {
 
-        public override void OnBodyGUI() {
+        public override void OnBodyGUI()
+        {
             serializedObject.Update();
 
-            Branch node = target as Branch;
             NodeEditorGUILayout.PortField(target.GetInputPort("input"));
             EditorGUILayout.Space();
             NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("conditions"));
@@ -22,7 +21,8 @@ namespace DialogueEditor {
             serializedObject.ApplyModifiedProperties();
         }
 
-        public override int GetWidth() {
+        public override int GetWidth()
+        {
             return 336;
         }
     }

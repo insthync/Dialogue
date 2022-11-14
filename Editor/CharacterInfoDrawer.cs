@@ -1,14 +1,14 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-using CharacterInfo = Dialogue.CharacterInfo;
-
-namespace Dialogue {
+namespace Dialogue
+{
 	// prefab override logic works on the entire property.
 	[CustomPropertyDrawer(typeof(CharacterInfo))]
-	public class CharacterInfoDrawer : PropertyDrawer {
-
-		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
+	public class CharacterInfoDrawer : PropertyDrawer
+	{
+		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+		{
 			label = EditorGUI.BeginProperty(position, label, property);
 			EditorGUI.BeginChangeCheck();
 
@@ -25,14 +25,17 @@ namespace Dialogue {
 			string buttonLabel = "Select";
 			CharacterInfo currentCharInfo = property.objectReferenceValue as CharacterInfo;
 			if (currentCharInfo != null) buttonLabel = currentCharInfo.name;
-			if (GUI.Button(buttonRect, buttonLabel)) {
+			if (GUI.Button(buttonRect, buttonLabel))
+			{
 				GenericMenu menu = new GenericMenu();
 				menu.AddItem(new GUIContent("None"), currentCharInfo == null, () => SelectMatInfo(property, null));
 				string[] guids = AssetDatabase.FindAssets("t:CharacterInfo");
-				for (int i = 0; i < guids.Length; i++) {
+				for (int i = 0; i < guids.Length; i++)
+				{
 					string path = AssetDatabase.GUIDToAssetPath(guids[i]);
 					CharacterInfo matInfo = AssetDatabase.LoadAssetAtPath(path, typeof(CharacterInfo)) as CharacterInfo;
-					if (matInfo != null) {
+					if (matInfo != null)
+					{
 						GUIContent content = new GUIContent(matInfo.name);
 						string[] nameParts = matInfo.name.Split(' ');
 						if (nameParts.Length > 1) content.text = nameParts[0] + "/" + matInfo.name.Substring(nameParts[0].Length + 1);
@@ -53,7 +56,8 @@ namespace Dialogue {
 			EditorGUI.EndProperty();
 		}
 
-		private void SelectMatInfo(SerializedProperty property, CharacterInfo charInfo) {
+		private void SelectMatInfo(SerializedProperty property, CharacterInfo charInfo)
+		{
 			property.objectReferenceValue = charInfo;
 			property.serializedObject.ApplyModifiedProperties();
 			property.serializedObject.Update();

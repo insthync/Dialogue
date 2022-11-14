@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Dialogue;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using XNodeEditor;
 
-namespace DialogueEditor {
+namespace DialogueEditor
+{
     [CustomNodeEditor(typeof(Dialogue.Event))]
-    public class EventEditor : NodeEditor {
-
-        public override void OnBodyGUI() {
+    public class EventEditor : NodeEditor
+    {
+        public override void OnBodyGUI()
+        {
             serializedObject.Update();
 
             Dialogue.Event node = target as Dialogue.Event;
@@ -20,7 +19,8 @@ namespace DialogueEditor {
             serializedObject.ApplyModifiedProperties();
         }
 
-        public override int GetWidth() {
+        public override int GetWidth()
+        {
             return 336;
         }
     }
