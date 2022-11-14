@@ -8,7 +8,6 @@ namespace Dialogue
     [CustomNodeEditor(typeof(Chat))]
     public class ChatEditor : NodeEditor
     {
-
         public override void OnBodyGUI()
         {
             serializedObject.Update();
@@ -16,6 +15,7 @@ namespace Dialogue
             Chat node = target as Chat;
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("character"), GUIContent.none);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("voiceClip"));
             if (node.answers.Count == 0)
             {
                 GUILayout.BeginHorizontal();

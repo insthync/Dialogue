@@ -8,6 +8,7 @@ namespace Dialogue
     public partial class Chat : DialogueBaseNode
     {
         public CharacterInfo character;
+        public AudioClip voiceClip;
         public string title;
         [TextArea] public string text;
         [Output(dynamicPortList = true)] public List<Answer> answers = new List<Answer>();
@@ -16,7 +17,6 @@ namespace Dialogue
         public partial class Answer
         {
             public string text;
-            public AudioClip voiceClip;
         }
 
         public void AnswerQuestion(int index)
