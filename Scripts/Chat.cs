@@ -10,13 +10,32 @@ namespace Dialogue
         public CharacterInfo character;
         public AudioClip voiceClip;
         public string title;
+        public LanguageData[] titleByLanguageKeys = new LanguageData[0];
+
         [TextArea] public string text;
+        public LanguageData[] textByLanguageKeys = new LanguageData[0];
+
         [Output(dynamicPortList = true)] public List<Answer> answers = new List<Answer>();
 
         [System.Serializable]
         public partial class Answer
         {
             public string text;
+            public LanguageData[] textByLanguageKeys = new LanguageData[0];
+            public string GetText(string languageKey)
+            {
+                return textByLanguageKeys.GetTextByLanguageKey(languageKey, text);
+            }
+        }
+
+        public string GetTitle(string languageKey)
+        {
+            return titleByLanguageKeys.GetTextByLanguageKey(languageKey, title);
+        }
+
+        public string GetText(string languageKey)
+        {
+            return textByLanguageKeys.GetTextByLanguageKey(languageKey, text);
         }
 
         public void AnswerQuestion(int index)
