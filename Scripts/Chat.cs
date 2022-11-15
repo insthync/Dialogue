@@ -22,6 +22,7 @@ namespace Dialogue
         {
             public string text;
             public LanguageData[] textByLanguageKeys = new LanguageData[0];
+            public BaseAnswerCondition[] showAnswerConditions = new BaseAnswerCondition[0];
             public string GetText(string languageKey)
             {
                 return textByLanguageKeys.GetTextByLanguageKey(languageKey, text);
