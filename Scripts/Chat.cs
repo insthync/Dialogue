@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using XNode;
 
@@ -26,6 +27,16 @@ namespace Dialogue
             public string GetText(string languageKey)
             {
                 return textByLanguageKeys.GetTextByLanguageKey(languageKey, text);
+            }
+
+            public async Task<bool> IsPassAllShowConditions()
+            {
+                for (int i = 0; i < showAnswerConditions.Length; ++i)
+                {
+                    if (!await showAnswerConditions[i].IsPass())
+                        return false;
+                }
+                return true;
             }
         }
 
